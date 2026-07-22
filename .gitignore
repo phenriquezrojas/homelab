@@ -1,0 +1,37 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.secret
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Runtime and local state
+*.log
+*.pid
+*.sock
+tmp/
+temp/
+.cache/
+
+# Backups and database dumps
+*.bak
+*.backup
+*.dump
+*.sql.gz
+*.tar.gz
+*.zip
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Tooling output
+coverage/
+reports/
