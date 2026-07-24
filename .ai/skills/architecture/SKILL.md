@@ -1,3 +1,8 @@
+---
+name: architecture
+description: Mantener la coherencia entre Constitución, ADR, fases y cambios propuestos.
+---
+
 # Architecture Skill
 
 ## Rol

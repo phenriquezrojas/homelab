@@ -1,3 +1,8 @@
+---
+name: review
+description: Revisar cambios por corrección, seguridad, coherencia documental, trazabilidad y deuda técnica.
+---
+
 # Review Skill
 
 ## Rol

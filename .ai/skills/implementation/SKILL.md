@@ -1,3 +1,8 @@
+---
+name: implementation
+description: Implementar únicamente trabajo aprobado, con alcance mínimo, validación proporcional y documentación asociada.
+---
+
 # Implementation Skill
 
 ## Rol

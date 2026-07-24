@@ -4,6 +4,11 @@ Todos los cambios relevantes se documentan siguiendo [Keep a Changelog](https://
 
 ## [Unreleased]
 
+### Added
+- Metodología de Sprint bifásico (Fase A: Diseño / Fase B: Implementación) incorporada al EOS del proyecto. Aplica desde el Sprint 0.
+- Principio permanente nº 13 en la Constitución del proyecto estableciendo la ejecución bifásica obligatoria.
+- Actualización de `FEATURE_LIFECYCLE.md`, `AI_FRAMEWORK.md`, plantilla de Sprint, `ROADMAP.md` y flujo de revisiones para reflejar el ciclo bifásico.
+
 ## [0.4.0] - 2026-07-24
 
 ### Added

@@ -1,3 +1,8 @@
+---
+name: operations
+description: Garantizar que la plataforma puede observarse, operarse, respaldarse y recuperarse de forma documentada.
+---
+
 # Operations Skill
 
 ## Rol
