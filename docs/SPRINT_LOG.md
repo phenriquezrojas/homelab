@@ -37,16 +37,30 @@ formato para facilitar la trazabilidad del proyecto.
 
 ## Sprint -0.5.1 — Pull Request Review Corrections
 
+- **Fecha:** 2026-07-24
+- **Objetivo:** incorporar las observaciones de revisión del inventario y dejar la base documental lista para Sprint 0 sin añadir capacidades de host.
+- **Entregables:** advertencia de privilegios, clasificación de disponibilidad de comandos, resumen ejecutivo, nombre de reporte con hostname y actualización de la guía de inventario.
+- **Decisiones importantes:** el reporte conserva el enfoque solo lectura y clasifica errores sin ejecutar expresiones o pipelines arbitrarios.
+- **Riesgos abiertos:** los datos siguen siendo `Best Effort`; la cobertura depende de permisos y herramientas existentes en el host.
+- **Deuda técnica:** ninguna.
+- **Estado:** Approved
+
+## Sprint -0.6 — AI Development Framework
+
+- **Fecha:** 2026-07-24
+- **Objetivo:** definir el marco agnóstico de modelo para trabajo asistido por agentes.
+- **Entregables:** `.ai/context/AI_FRAMEWORK.md` definiendo directrices, jerarquía de autoridad y reglas de operación para agentes de IA.
+- **Decisiones importantes:** el marco de desarrollo de IA debe ser agnóstico y basarse únicamente en estándares del repositorio.
+- **Riesgos abiertos:** ninguno.
+- **Deuda técnica:** ninguna.
+- **Estado:** Approved
+
+## Sprint -0.7 — Engineering Operating System (EOS)
+
 - **Fecha:** 2026-07-22
-- **Objetivo:** incorporar las observaciones de revisión del inventario y dejar
-  la base documental lista para Sprint 0 sin añadir capacidades de host.
-- **Entregables:** advertencia de privilegios, clasificación de disponibilidad
-  de comandos, resumen ejecutivo, nombre de reporte con hostname y
-  actualización de la guía de inventario.
-- **Decisiones importantes:** el reporte conserva el enfoque solo lectura y
-  clasifica errores sin ejecutar expresiones o pipelines arbitrarios.
-- **Riesgos abiertos:** los datos siguen siendo `Best Effort`; la cobertura
-  depende de permisos y herramientas existentes en el host.
-- **Deuda técnica:** revisar el inventario en el host Ubuntu definitivo y
-  resolver las herramientas ausentes únicamente en el sprint que las autorice.
+- **Objetivo:** crear la capa de conocimiento permanente del repositorio (EOS) y regularizar la narrativa documental de sprints y estados.
+- **Entregables:** Constitución del proyecto, contexto resumido, plan maestro por fases, tareas, sprints, ciclo de vida, roles y plantillas transversales bajo `.ai/`.
+- **Decisiones importantes:** la Constitución en `.ai/PROJECT_CONSTITUTION.md` se establece como la máxima autoridad de gobierno técnico del repositorio.
+- **Riesgos abiertos:** desalineación documental de tareas si no se mantiene la consistencia cruzada en los commits.
+- **Deuda técnica:** resolver la revisión pendiente de inventario (Sprint -0.5.1) y el marco de IA (Sprint -0.6) en fases posteriores.
 - **Estado:** Approved

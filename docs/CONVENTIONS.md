@@ -50,6 +50,7 @@ Antes de `1.0.0`, `0.y.z` comunica evolución. Cada versión publicada debe etiq
 
 | Ruta | Propósito |
 | --- | --- |
+| `.ai/` | Capa de conocimiento permanente (EOS) y gobernanza de IA. |
 | `adr/` | Decisiones de arquitectura inmutables. |
 | `assets/` | Recursos estáticos de documentación. |
 | `backup/` | Configuración declarativa y documentación de respaldos. |

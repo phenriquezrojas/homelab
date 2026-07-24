@@ -7,7 +7,7 @@ Data is the only irreplaceable asset.
 
 ## Estado
 
-El proyecto está en **Sprint -1: fundaciones documentales y organizacionales**. No hay servicios desplegados ni automatizaciones funcionales. Consulte [ROADMAP.md](ROADMAP.md) y [CURRENT_STATE.md](CURRENT_STATE.md).
+El proyecto ha completado la fase inicial de fundaciones documentales y el Engineering Operating System (EOS) de Sprint -0.7. No hay servicios desplegados ni automatizaciones funcionales en producción. Consulte [ROADMAP.md](ROADMAP.md) y [CURRENT_STATE.md](CURRENT_STATE.md).
 
 ## Decisiones vigentes
 
@@ -24,6 +24,7 @@ Los detalles están en [adr/](adr/) y el índice ejecutivo en [DECISIONS.md](DEC
 ## Estructura prevista
 
 ```text
+.ai/        capa de conocimiento permanente (EOS) y gobernanza de IA
 adr/        decisiones de arquitectura
 assets/     recursos estáticos de documentación
 backup/     definiciones y documentación de respaldos
