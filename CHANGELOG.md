@@ -5,6 +5,9 @@ Todos los cambios relevantes se documentan siguiendo [Keep a Changelog](https://
 ## [Unreleased]
 
 ### Added
+- Cierre del Sprint 0.A (Diseño). Generados artefactos de diseño para la persistencia, secretos y red (tareas [HL-0006](.ai/tasks/HL-0006.md), [HL-0007](.ai/tasks/HL-0007.md), [HL-0008](.ai/tasks/HL-0008.md) y plan `.ai/implementation/Sprint-0-Plan.md`).
+
+### Added
 - Metodología de Sprint bifásico (Fase A: Diseño / Fase B: Implementación) incorporada al EOS del proyecto. Aplica desde el Sprint 0.
 - Principio permanente nº 13 en la Constitución del proyecto estableciendo la ejecución bifásica obligatoria.
 - Actualización de `FEATURE_LIFECYCLE.md`, `AI_FRAMEWORK.md`, plantilla de Sprint, `ROADMAP.md` y flujo de revisiones para reflejar el ciclo bifásico.

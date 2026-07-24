@@ -1,25 +1,24 @@
 # Estado actual
 
-**Fase:** Sprint -0.7 — Engineering Operating System (EOS)  
-**Fecha de actualización:** 2026-07-22  
-**Estado general:** Base documental y la capa de conocimiento permanente (EOS) completados; herramientas de inventario en modo solo lectura validadas. Implementación técnica de infraestructura no iniciada.
+**Fase:** Sprint 0.B — Preparación de Bootstrap (Implementación)  
+**Fecha de actualización:** 2026-07-24  
+**Estado general:** Fase de diseño técnico base completada (Sprint 0.A). Estamos listos para comenzar la implementación mecánica de las bases de persistencia y secretos en el host.
 
 ## Completado
 
 - **Sprint -1 (Fundaciones):** Visión, charter, roadmap, convenciones y ADR-001 a ADR-008 aprobados.
-- **Sprint -0.5 (Host Inventory):** Herramienta de inventario solo lectura `scripts/inventory.sh` implementada y validada en modo local.
-- **Sprint -0.5.1 (Correcciones del PR):** Observaciones del Pull Request de inventario verificadas e integradas (tarea [HL-0003](.ai/tasks/HL-0003.md)).
-- **Sprint -0.6 (AI Development Framework):** Diseñado el marco agnóstico de modelo para agentes en `.ai/context/AI_FRAMEWORK.md` (tarea [HL-0004](.ai/tasks/HL-0004.md)).
-- **Sprint -0.7 (EOS):** Estructura del Engineering Operating System (`.ai/`) creada con principios, contexto, plan maestro, tareas y plantillas transversales.
+- **Sprint -0.5 a -0.7 (EOS):** Inventario de solo lectura y marco de trabajo de ingeniería.
+- **Sprint 0.A (Diseño de Preparación):** Diseñado el modelo de secretos, red y `/srv`. Creadas tareas HL-0006, HL-0007 y HL-0008, e Implementation Plan.
 
 ## Planificado / Pendiente
 
-- **Sprint 0 (Preparación de Bootstrap):** Definir modelo de secretos, topología de red, estructura física de `/srv` y criterios de acceptance del bootstrap.
+- **Sprint 0.B (Implementación de Bootstrap):** Ejecutar y validar físicamente la estructura en el host y configuración local.
+- **Sprint 1.A (Diseño Bootstrap):** Documentar los pasos reproducibles de instalación base de Docker y dependencias LTS.
 
 ## Restricciones vigentes
 
-No se añadirán secretos, servicios funcionales, scripts de automatización destructivos, Docker Compose ni GitHub Actions durante esta fase. `bootstrap.sh` y `restore.sh` siguen siendo marcadores de posición.
+No se añadirán servicios funcionales ni Docker Compose hasta validar los mecanismos de persistencia en la Fase B.
 
 ## Próximo hito
 
-Iniciar la preparación del **Sprint 0** para avanzar hacia la configuración e infraestructura base del servidor.
+Iniciar el **Sprint 0.B**, creando las carpetas en `/srv` y configurando las restricciones correspondientes en `.gitignore`.
