@@ -82,3 +82,12 @@ formato para facilitar la trazabilidad del proyecto.
 - **Documentación creada:** `docs/SECRETS.md`, `docs/NETWORK.md`.
 - **Repositorio clonado:** En `homelab`.
 - **Estado:** Approved
+
+## Sprint 1.A — Bootstrap del Host (Diseño)
+
+- **Fecha:** 2026-07-28
+- **Objetivo:** Diseñar el contrato técnico que deberá cumplir cualquier implementación futura del bootstrap del host.
+- **Entregables:** Sprint Specification, Implementation Plan, Tasks (HL-0009 a HL-0012) y ADR-009.
+- **Decisiones importantes:** Se adoptó un enfoque mixto de idempotencia donde el gestor de paquetes (apt) administra el estado y el script valida el estado funcional esperado (ADR-009).
+- **Lecciones aprendidas:** El bootstrap asume la responsabilidad de garantizar la estructura `/srv/homelab` y no la trata como un prerrequisito externo.
+- **Estado:** Approved
