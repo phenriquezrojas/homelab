@@ -5,6 +5,7 @@ Todos los cambios relevantes se documentan siguiendo [Keep a Changelog](https://
 ## [Unreleased]
 
 ### Added
+- Refactorización del EOS (Sprint 0.C). Creación del `STATE_INDEX.md` para abstraer los documentos de estado global. Modificación del hook `pre-commit` para validación cruzada de tareas y actualización de Skills.
 - Cierre del Sprint 0.B (Implementación). Ejecutada la estructura física en el host `/srv/homelab` y documentados los mecanismos de red (`docs/NETWORK.md`) y secretos (`docs/SECRETS.md`).
 - Cierre del Sprint 0.A (Diseño). Generados artefactos de diseño para la persistencia, secretos y red (tareas [HL-0006](.ai/tasks/HL-0006.md), [HL-0007](.ai/tasks/HL-0007.md), [HL-0008](.ai/tasks/HL-0008.md) y plan `.ai/implementation/Sprint-0-Plan.md`).
 

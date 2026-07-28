@@ -1,27 +1,54 @@
 #!/usr/bin/env bash
 
-# pre-commit hook to enforce state file updates on sprint closure
-# This enforces the EOS rules for AI agents and humans.
+# pre-commit hook to enforce state file updates and task cross-validation
 
-# Check if any sprint file is staged
-if git diff --cached --name-only | grep -q "^.ai/sprints/Sprint-"; then
+# 1. Validación de Documentos de Estado Global (EOS Index)
+if git diff --cached --name-only | grep -q "^\.ai/sprints/Sprint-"; then
     echo "🔍 Se detectó cierre/modificación de Sprint. Verificando documentos de estado EOS..."
     MISSING=""
     
-    # Check each required EOS tracking document
-    for file in CURRENT_STATE.md ROADMAP.md docs/SPRINT_LOG.md CHANGELOG.md; do
+    # Leer rutas dinámicamente desde STATE_INDEX.md (ignorando líneas que no empiezan con guion)
+    STATE_FILES=$(grep "^-" .ai/eos/STATE_INDEX.md | awk '{print $2}')
+    
+    for file in $STATE_FILES; do
         if ! git diff --cached --name-only | grep -q "^${file}$"; then
             MISSING="${MISSING} ${file}"
         fi
     done
     
     if [ ! -z "$MISSING" ]; then
-        echo "❌ ERROR: Estás cerrando o modificando un Sprint pero has olvidado añadir (git add) los siguientes documentos obligatorios:"
+        echo "❌ ERROR: Estás cerrando o modificando un Sprint pero has olvidado añadir (git add) los siguientes documentos de estado global obligatorios:"
         echo "   $MISSING"
-        echo "Por regla de la Constitución, debes actualizar todos los índices de estado en el mismo commit."
+        echo "Por regla de la Constitución, debes actualizar todos los índices de estado definidos en .ai/eos/STATE_INDEX.md en el mismo commit."
         echo "Agente: Por favor actualiza los archivos faltantes y vuelve a intentar el commit."
         exit 1
     fi
     echo "✅ Documentos de estado EOS verificados."
+    
+    # 2. Validación Cruzada de Tareas
+    # Buscar si algún Sprint en el stage fue marcado como 'Completed'
+    for sprint_file in $(git diff --cached --name-only | grep "^\.ai/sprints/Sprint-"); do
+        if grep -q "Estado.*Completed" "$sprint_file"; then
+            echo "🔍 Sprint marcado como Completed. Verificando estado de Tareas referenciadas..."
+            # Extraer IDs de tareas (HL-XXXX) mencionadas en el Sprint
+            TASKS=$(grep -o "HL-[0-9]\{4\}" "$sprint_file" | sort | uniq)
+            
+            for task in $TASKS; do
+                task_file=".ai/tasks/${task}.md"
+                if [ -f "$task_file" ]; then
+                    # Comprobar si la tarea dice Completed
+                    if ! grep -q "Estado.*Completed" "$task_file"; then
+                        echo "❌ ERROR DE CONSISTENCIA: El Sprint '$sprint_file' está 'Completed', pero la tarea '$task' aún NO está completada en '$task_file'."
+                        echo "Agente: Revisa las tareas pendientes o actualiza su estado."
+                        exit 1
+                    fi
+                else
+                    echo "⚠️ WARNING: Tarea $task referenciada en $sprint_file no existe en .ai/tasks/."
+                fi
+            done
+            echo "✅ Tareas referenciadas verificadas (Todas están Completed)."
+        fi
+    done
 fi
+
 exit 0
