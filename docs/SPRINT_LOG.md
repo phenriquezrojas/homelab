@@ -64,3 +64,21 @@ formato para facilitar la trazabilidad del proyecto.
 - **Riesgos abiertos:** desalineación documental de tareas si no se mantiene la consistencia cruzada en los commits.
 - **Deuda técnica:** resolver la revisión pendiente de inventario (Sprint -0.5.1) y el marco de IA (Sprint -0.6) en fases posteriores.
 - **Estado:** Approved
+
+## Sprint 0.A — Diseño del Bootstrap Base
+
+- **Fecha:** 2026-07-24
+- **Objetivo:** Definir e interconectar conceptualmente la estructura de persistencia, secretos y red.
+- **Entregables:** Sprint Specification, Implementation Plan, Tasks (HL-0006, HL-0007, HL-0008).
+- **Decisiones importantes:** Se preparan decisiones basadas en ADR 001, 006, 008.
+- **Lecciones aprendidas:** La separación física Fase A/B garantiza diseño atómico.
+- **Estado:** Approved
+
+## Sprint 0.B — Implementación del Bootstrap Base
+
+- **Fecha:** 2026-07-24
+- **Objetivo:** Materializar decisiones de Fase A en servidor.
+- **Infraestructura creada:** Directorios base `/srv/homelab` y permisos.
+- **Documentación creada:** `docs/SECRETS.md`, `docs/NETWORK.md`.
+- **Repositorio clonado:** En `homelab`.
+- **Estado:** Approved

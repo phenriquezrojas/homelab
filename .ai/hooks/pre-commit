@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# pre-commit hook to enforce state file updates on sprint closure
+# This enforces the EOS rules for AI agents and humans.
+
+# Check if any sprint file is staged
+if git diff --cached --name-only | grep -q "^.ai/sprints/Sprint-"; then
+    echo "🔍 Se detectó cierre/modificación de Sprint. Verificando documentos de estado EOS..."
+    MISSING=""
+    
+    # Check each required EOS tracking document
+    for file in CURRENT_STATE.md ROADMAP.md docs/SPRINT_LOG.md CHANGELOG.md; do
+        if ! git diff --cached --name-only | grep -q "^${file}$"; then
+            MISSING="${MISSING} ${file}"
+        fi
+    done
+    
+    if [ ! -z "$MISSING" ]; then
+        echo "❌ ERROR: Estás cerrando o modificando un Sprint pero has olvidado añadir (git add) los siguientes documentos obligatorios:"
+        echo "   $MISSING"
+        echo "Por regla de la Constitución, debes actualizar todos los índices de estado en el mismo commit."
+        echo "Agente: Por favor actualiza los archivos faltantes y vuelve a intentar el commit."
+        exit 1
+    fi
+    echo "✅ Documentos de estado EOS verificados."
+fi
+exit 0

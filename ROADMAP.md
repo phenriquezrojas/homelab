@@ -11,8 +11,8 @@ A partir del Sprint 0, cada Sprint se divide en dos fases: **Fase A (Diseño)** 
 | -0.5.1 — PR Corrections | Atender observaciones del PR de inventario. | Corrección de privilegios y clasificación de comandos en script. | Sprint -0.5 | Completed |
 | -0.6 — AI Framework | Definir marco de desarrollo para agentes de IA. | Criterios y directrices de desarrollo asistido por agentes (`.ai/context/AI_FRAMEWORK.md`). | Sprint -1 | Completed |
 | -0.7 — EOS | Crear el Engineering Operating System (EOS). | Constitución, plan maestro, tareas y plantillas transversales en `.ai/`. | Sprints -1, -0.5.1, -0.6 | Completed |
-| 0.A — Preparación (Diseño) | Diseñar modelo de secretos, plan de red y estructura de `/srv`. | Sprint Specification, Implementation Plan, Tasks y criterios de aceptación aprobados. | Sprints -1, -0.7 | Planned |
-| 0.B — Preparación (Implementación) | Ejecutar y validar los artefactos de diseño del Sprint 0. | Modelo de secretos, plan de red y estructura de `/srv` aprobados. | Sprint 0.A | Planned |
+| 0.A — Preparación (Diseño) | Diseñar modelo de secretos, plan de red y estructura de `/srv`. | Sprint Specification, Implementation Plan, Tasks y criterios de aceptación aprobados. | Sprints -1, -0.7 | Completed |
+| 0.B — Preparación (Implementación) | Ejecutar y validar los artefactos de diseño del Sprint 0. | Modelo de secretos, plan de red y estructura de `/srv` aprobados. | Sprint 0.A | Completed |
 | 1.A — Bootstrap (Diseño) | Diseñar proceso reproducible de base del host. | Sprint Specification, Implementation Plan, Tasks y criterios de aceptación aprobados. | Sprint 0.B | Planned |
 | 1.B — Bootstrap (Implementación) | Reproducir base del host. | Proceso validado para Ubuntu Server LTS, Docker y directorios persistentes. | Sprint 1.A | Planned |
 | 2.A — Plataforma central (Diseño) | Diseñar componentes compartidos. | Sprint Specification, Implementation Plan, Tasks y criterios de aceptación aprobados. | Sprint 1.B | Planned |
