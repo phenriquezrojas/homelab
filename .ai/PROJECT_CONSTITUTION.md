@@ -22,6 +22,14 @@ cambio y solicitar una decisión explícita mediante ADR.
 11. Se mantiene la simplicidad y se evitan dependencias innecesarias.
 12. Todo cambio debe ser reversible o describir claramente su reversión antes de ejecutarse.
 13. Todo Sprint se ejecuta en dos fases secuenciales: Diseño (A) e Implementación (B). No se inicia la Fase B sin aprobación explícita de los artefactos de la Fase A. Aplica desde el Sprint 0.
+14. Ningún agente posee autoridad para aprobar un Sprint. Todo Sprint implementado pasa automáticamente al estado: In Review, hasta recibir aprobación explícita del Owner.
+    Mientras un Sprint esté In Review está prohibido:
+    - marcar Completed
+    - actualizar CURRENT_STATE
+    - actualizar ROADMAP
+    - actualizar CHANGELOG
+    - registrar el Sprint como Approved
+    - ejecutar el commit de cierre
 
 ## Reglas de trabajo
 
@@ -43,3 +51,16 @@ Un agente que se incorpora debe leer, en orden:
 3. `.ai/skills/`
 4. `.ai/implementation/MASTER_PLAN.md`
 5. `.ai/tasks/`
+
+## Regla de Gate Review
+
+La revisión de un Sprint tiene como objetivo verificar el cumplimiento del contrato aprobado durante la Fase A.
+
+Durante el Gate Review:
+
+- No se amplía el alcance del Sprint.
+- No se introducen nuevos requisitos.
+- No se realizan refactorizaciones por preferencia.
+- Las mejoras que no incumplan el contrato aprobado deberán registrarse como Deuda Técnica, ADR o backlog.
+
+Únicamente los incumplimientos del contrato aprobado podrán bloquear el cierre del Sprint.

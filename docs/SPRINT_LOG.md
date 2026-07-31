@@ -89,5 +89,14 @@ formato para facilitar la trazabilidad del proyecto.
 - **Objetivo:** Diseñar el contrato técnico que deberá cumplir cualquier implementación futura del bootstrap del host.
 - **Entregables:** Sprint Specification, Implementation Plan, Tasks (HL-0009 a HL-0012) y ADR-009.
 - **Decisiones importantes:** Se adoptó un enfoque mixto de idempotencia donde el gestor de paquetes (apt) administra el estado y el script valida el estado funcional esperado (ADR-009).
-- **Lecciones aprendidas:** El bootstrap asume la responsabilidad de garantizar la estructura `/srv/homelab` y no la trata como un prerrequisito externo.
 - **Estado:** Approved
+
+## Sprint 1.B — Bootstrap del Host (Implementación)
+
+- **Fecha:** 2026-07-28
+- **Objetivo:** Ejecutar el diseño del Sprint 1.A y entregar un script validado en el host que prepare Ubuntu Server LTS con Docker y los directorios persistentes de forma determinista e idempotente.
+- **Entregables:** Script `bootstrap/bootstrap.sh`, tareas HL-0013 y HL-0014 completadas, y evidencias de ejecución en el host.
+- **Decisiones importantes:** Se implementó el script con 6 fases y 3 niveles de idempotencia exigidos.
+- **Lecciones aprendidas:** Ejecutar vía SSH (SCP) un script idempotente permite validar la automatización remotamente sin necesidad de ensuciar el host con código no versionado o clonaciones prematuras. El script sobrevivió y demostró idempotencia en 3 ejecuciones consecutivas.
+- **Estado:** Approved
+

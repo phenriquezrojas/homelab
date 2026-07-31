@@ -22,13 +22,13 @@ Documento vivo de ejecución técnica. Se organiza por fases, no por sprints. La
 - **Objetivo:** preparar de forma reproducible el host Ubuntu Server LTS.
 - **Descripción:** definir y ejecutar el proceso aprobado para host, Docker y estructura inicial de `/srv`.
 - **Dependencias:** Phase 0; inventario validado y modelo de secretos definido.
-- **Estado:** In Progress.
+- **Estado:** Completed.
 - **Riesgos:** diferencias entre host inventariado y host definitivo; cambios manuales no documentados.
 - **Checklist:**
   - [x] Validar host y versión LTS.
   - [x] Definir estructura y permisos de `/srv`.
   - [x] Aprobar gestión de secretos.
-  - [ ] Implementar script de bootstrap validado.
+  - [x] Implementar script de bootstrap validado.
 - **Sprints relacionados:** Sprint 0 y Sprint 1.
 - **ADR relacionados:** ADR-001, ADR-002, ADR-003, ADR-009.
 - **Tareas relacionadas:** HL-0006, HL-0007, HL-0008, HL-0009, HL-0010, HL-0011, HL-0012.
