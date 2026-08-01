@@ -1,0 +1,21 @@
+services:
+  caddy:
+    image: caddy:2.7.6-alpine
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - /srv/homelab/app_data/caddy/data:/data
+      - /srv/homelab/app_data/caddy/config:/config
+    networks:
+      - homelab-net
+
+networks:
+  homelab-net:
+    name: homelab-net
+    driver: bridge
+    # El compose de Caddy es el propietario inicial de la red durante Sprint 2.B.
+    # A partir de Sprint 3 la red pasa a considerarse infraestructura existente.

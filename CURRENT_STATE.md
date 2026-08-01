@@ -1,10 +1,9 @@
 # Estado actual
 
-**Fase:** Sprint 2.A — Plataforma central (Diseño)
-**Fecha de actualización:** 2026-07-28
-**Estado general:** Sprint 1.B finalizado (Phase 1 Completada).
+**Fase:** Sprint 2.B2 — Plataforma central (Despliegue y Validación Operacional)
+**Fecha de actualización:** 2026-08-01
+**Estado general:** Sprint 2.B1 (Implementación Declarativa en Repositorio) finalizada. Sprint 2.B2 (Despliegue en Host) en curso.
 
-El host Ubuntu Server LTS ha sido aprovisionado exitosamente con Docker Engine, Docker Compose, dependencias base y la estructura `/srv/homelab` persistente. El script de bootstrap ha demostrado ser totalmente idempotente.
+La solución declarativa para acceso privado (Tailscale), proxy inverso (Caddy), DNS `home.arpa` y red compartida (`homelab-net`) ha sido completamente implementada y versionada en Git.
 
-El proyecto se encuentra listo para iniciar la Phase 2 (Almacenamiento) y/o Sprint 2.A.
-
+El proyecto se encuentra listo para capturar las evidencias empíricas de despliegue en el host servidor (Subfase B2).

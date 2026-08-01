@@ -53,15 +53,15 @@ Documento vivo de ejecución técnica. Se organiza por fases, no por sprints. La
 - **Objetivo:** habilitar conectividad privada y nombres internos coherentes.
 - **Descripción:** Tailscale, DNS interno `home.arpa` y entrada HTTP(S) con Caddy.
 - **Dependencias:** Phases 1 y 2.
-- **Estado:** Planned.
+- **Estado:** In Progress.
 - **Riesgos:** DNS incompleto, ACL excesivas y exposición accidental.
 - **Checklist:**
-  - [ ] Diseñar DNS y subdominios.
+  - [x] Diseñar DNS y subdominios.
   - [ ] Definir acceso Tailscale y revocación.
-  - [ ] Diseñar integración Caddy.
+  - [x] Diseñar integración Caddy.
 - **Sprints relacionados:** Sprint 2.
 - **ADR relacionados:** ADR-006, ADR-007, ADR-008.
-- **Tareas relacionadas:** por planificar.
+- **Tareas relacionadas:** HL-0015, HL-0016, HL-0017, HL-0018, HL-0019.
 
 ## Phase 4 — Identity & Security
 
@@ -83,15 +83,15 @@ Documento vivo de ejecución técnica. Se organiza por fases, no por sprints. La
 - **Objetivo:** habilitar dependencias compartidas para servicios.
 - **Descripción:** proxy, PostgreSQL y Redis bajo las decisiones aprobadas.
 - **Dependencias:** Phases 1 a 4.
-- **Estado:** Planned.
+- **Estado:** In Progress.
 - **Riesgos:** dependencias compartidas sin operación ni recuperación definida.
 - **Checklist:**
-  - [ ] Definir contratos de red y persistencia.
+  - [x] Definir contratos de red y persistencia.
   - [ ] Documentar operación de datos compartidos.
   - [ ] Añadir pruebas y runbooks.
 - **Sprints relacionados:** Sprint 2.
 - **ADR relacionados:** ADR-002, ADR-007.
-- **Tareas relacionadas:** por planificar.
+- **Tareas relacionadas:** HL-0016, HL-0018, HL-0019.
 
 ## Phase 6 — Applications
 

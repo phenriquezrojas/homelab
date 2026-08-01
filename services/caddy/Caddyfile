@@ -1,0 +1,3 @@
+health.home.arpa {
+    respond "OK" 200
+}

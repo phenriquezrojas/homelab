@@ -100,3 +100,11 @@ formato para facilitar la trazabilidad del proyecto.
 - **Lecciones aprendidas:** Ejecutar vía SSH (SCP) un script idempotente permite validar la automatización remotamente sin necesidad de ensuciar el host con código no versionado o clonaciones prematuras. El script sobrevivió y demostró idempotencia en 3 ejecuciones consecutivas.
 - **Estado:** Approved
 
+## Sprint 2.A — Plataforma Central (Diseño)
+
+- **Fecha:** 2026-08-01
+- **Objetivo:** Diseñar el contrato técnico que Sprint 2.B deberá ejecutar para convertir el host bootstrapped en una plataforma con acceso privado (Tailscale), proxy inverso (Caddy), resolución DNS interna (`home.arpa`) y red Docker compartida.
+- **Entregables:** Sprint Specification, Implementation Plan y Tasks (HL-0015 a HL-0019).
+- **Decisiones importantes:** Se definió Tailscale MagicDNS + Split DNS para resolución, y se especificó que `health.home.arpa` resolverá a la IP de Tailscale del host. Caddy escuchará en `0.0.0.0` (los puertos estarán protegidos por la falta de port forwarding en el enrutador físico).
+- **Lecciones aprendidas:** El Gate Review basado en contrato (detectar, verificar contra contrato, clasificar) demostró ser clave para evitar que el proceso de revisión introduzca rediseños ("creep") no aprobados en el alcance inicial.
+- **Estado:** Approved

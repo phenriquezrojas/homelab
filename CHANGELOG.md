@@ -5,6 +5,7 @@ Todos los cambios relevantes se documentan siguiendo [Keep a Changelog](https://
 ## [Unreleased]
 
 ### Added
+- Cierre del Sprint 2.A (Diseño). Generados y validados los artefactos para implementar la plataforma central: Tailscale (acceso privado), Caddy (proxy inverso), DNS `home.arpa` y red compartida Docker `homelab-net`. Se produjeron las tareas HL-0015 a HL-0019 y el plan de implementación.
 - Cierre del Sprint 1.B (Implementación). Implementado el script `bootstrap/bootstrap.sh`. Verificada y comprobada empíricamente la idempotencia del script en el servidor `homelab` (3 ejecuciones sin error ni solapamiento). La *Phase 1* está oficialmente finalizada.
 - Cierre del Sprint 1.A (Diseño). Generados artefactos de diseño para el bootstrap del host, incluyendo el contrato de idempotencia (ADR-009) y las tareas de validación (HL-0009 a HL-0012).
 - Refactorización del EOS (Sprint 0.C). Creación del `STATE_INDEX.md` para abstraer los documentos de estado global. Modificación del hook `pre-commit` para validación cruzada de tareas y actualización de Skills.

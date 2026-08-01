@@ -6,9 +6,11 @@
 
 ## Fase
 
-A — Diseño | B — Implementación
+A — Diseño | B1 — Implementación Declarativa (Repositorio) | B2 — Despliegue y Validación Operacional (Host)
 
-> En Fase A se generan los artefactos de diseño; en Fase B se ejecuta lo aprobado.
+> En Fase A se generan los artefactos de diseño.
+> En Subfase B1 se implementan y versionan en Git los manifiestos, código y documentación.
+> En Subfase B2 se despliega en el host objetivo y se adjunta el artefacto obligatorio de evidencia (`docs/evidence/`).
 > Ver [FEATURE_LIFECYCLE.md](../lifecycle/FEATURE_LIFECYCLE.md) para reglas de transición.
 
 ## Alcance
@@ -26,11 +28,15 @@ A — Diseño | B — Implementación
 - [ ] Checklist de revisión preparado.
 - [ ] ADR creado (si aplica).
 
-### Fase B — Implementación
+### Subfase B1 — Implementación Declarativa (Repositorio)
 
-- [ ] <entregable de código/configuración/infraestructura>
-- [ ] Documentación paralela actualizada.
-- [ ] Evidencia de validación.
+- [ ] Manifiestos, código y configuración declarativa versionados en Git.
+- [ ] Documentación canónica actualizada.
+
+### Subfase B2 — Despliegue y Validación Operacional (Host)
+
+- [ ] Despliegue runtime ejecutado en el host objetivo.
+- [ ] Artefacto obligatorio de evidencia operacional creado en `docs/evidence/Sprint-x.B2-validation.md`.
 
 ## Archivos modificados
 

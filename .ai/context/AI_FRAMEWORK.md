@@ -51,14 +51,21 @@ A partir del Sprint 0, todo sprint sigue un ciclo bifásico. El agente adapta su
 
 ### Fase B — Implementación (Sprint x.B)
 
-1. **Verificación de Aprobación:** Confirmar que los artefactos de la Fase A están aprobados y la tarea está autorizada para ejecución.
-2. **Ejecución:** Aplicar cambios con alcance mínimo, siguiendo estrictamente lo definido en los artefactos de la Fase A.
-3. **Validación:** Comprobar sintaxis, pruebas existentes o consistencia documental.
-4. **Cierre:** Actualizar la metadata de la tarea, el sprint y el changelog.
+La Fase B se divide en dos subfases obligatorias:
+
+1. **Subfase B1 — Implementación Declarativa (Repositorio):**
+   - **Verificación de Aprobación:** Confirmar que los artefactos de la Fase A están aprobados.
+   - **Ejecución:** Crear y versionar en Git los manifiestos, código, Caddyfile, compose y documentación.
+   - **Criterio de salida:** 100% de los entregables declarativos versionados en el repositorio.
+
+2. **Subfase B2 — Despliegue y Validación Operacional (Host):**
+   - **Despliegue:** Aplicar la configuración runtime en el host de producción.
+   - **Validación Empírica:** Ejecutar comandos de salud y verificar funcionalidad real.
+   - **Evidencia Obligatoria:** Registrar el reporte empírico en `docs/evidence/` (fecha, sprint, host objetivo, comandos ejecutados, resultado obtenido, evidencias relevantes y conclusión).
 
 ### Retorno a Fase A
 
-Si durante la Fase B se descubre que el diseño es insuficiente o incorrecto, el agente debe detenerse y retornar a la Fase A para actualizar los artefactos antes de continuar. No se improvisan soluciones fuera del diseño aprobado.
+Si durante la Fase B (B1 o B2) se descubre que el diseño es insuficiente o incorrecto, el agente debe detenerse y retornar a la Fase A para actualizar los artefactos antes de continuar. No se improvisan soluciones fuera del diseño aprobado.
 
 ---
-*Este marco aplica a todos los agentes en el proyecto Homelab desde la finalización del Sprint -0.6. La metodología bifásica aplica a partir del Sprint 0.*
+*Este marco aplica a todos los agentes en el proyecto Homelab desde la finalización del Sprint -0.6. La metodología bifásica con subfases B1 y B2 aplica formalmente en el EOS.*
