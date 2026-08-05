@@ -12,6 +12,8 @@ Las siguientes decisiones están **aceptadas** y forman la línea base.
 | [ADR-006](adr/ADR-006-tailscale.md) | Tailscale para acceso privado | Aceptada |
 | [ADR-007](adr/ADR-007-caddy.md) | Caddy como proxy inverso | Aceptada |
 | [ADR-008](adr/ADR-008-home-arpa.md) | `home.arpa` como dominio interno | Aceptada |
+| [ADR-009](adr/ADR-009-bootstrap-idempotency.md) | Estrategia de idempotencia del Bootstrap | Aceptada |
+| [ADR-010](adr/ADR-010-homelab-runtime.md) | Runtime único y modular del Homelab | Propuesta |
 
 PostgreSQL y Redis son tecnologías de datos compartidas aprobadas. Su adopción concreta por servicio se documentará más adelante; un cambio arquitectónico requiere un ADR adicional.
 

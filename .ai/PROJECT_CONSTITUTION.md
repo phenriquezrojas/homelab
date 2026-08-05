@@ -39,6 +39,7 @@ El marco EOS se apoya en los siguientes pilares:
     - actualizar CHANGELOG
     - registrar el Sprint como Approved
     - ejecutar el commit de cierre
+15. Ningún Sprint podrá implementar capacidades del Homelab sin que exista previamente la capacidad correspondiente en el Runtime para instalarlas, configurarlas, validarlas y repararlas. El Runtime crece primero.
 
 ## Reglas de trabajo
 
