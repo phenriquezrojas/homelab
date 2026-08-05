@@ -1,0 +1,120 @@
+Actualizando 7b377f1..fb7e766
+Fast-forward
+ .ai/PROJECT_CONSTITUTION.md                |  60 +++++-
+ .ai/context/AI_FRAMEWORK.md                |  19 +-
+ .ai/eos/RUNTIME_ENGINE.md                  |  58 +++++
+ .ai/eos/STATE_INDEX.md                     |  12 ++
+ .ai/hooks/pre-commit                       |  43 +++-
+ .ai/implementation/MASTER_PLAN.md          |  19 +-
+ .ai/implementation/Sprint-1-Plan.md        | 194 +++++++++++++++++
+ .ai/implementation/Sprint-2-Plan.md        | 325 +++++++++++++++++++++++++++++
+ .ai/lifecycle/FEATURE_LIFECYCLE.md         |  46 ++--
+ .ai/skills/eos_runtime/SKILL.md            |  63 ++++++
+ .ai/skills/repository_consistency/SKILL.md |  15 ++
+ .ai/skills/sprint_closure/SKILL.md         |  10 +-
+ .ai/sprints/Sprint-1.A.md                  | 127 +++++++++++
+ .ai/sprints/Sprint-1.B.md                  |  48 +++++
+ .ai/sprints/Sprint-2.A.md                  | 197 +++++++++++++++++
+ .ai/sprints/Sprint-2.B.md                  |  83 ++++++++
+ .ai/tasks/HL-0009.md                       |  25 +++
+ .ai/tasks/HL-0010.md                       |  23 ++
+ .ai/tasks/HL-0011.md                       |  24 +++
+ .ai/tasks/HL-0012.md                       |  27 +++
+ .ai/tasks/HL-0013.md                       |  22 ++
+ .ai/tasks/HL-0014.md                       |  17 ++
+ .ai/tasks/HL-0015.md                       |  23 ++
+ .ai/tasks/HL-0016.md                       |  24 +++
+ .ai/tasks/HL-0017.md                       |  26 +++
+ .ai/tasks/HL-0018.md                       |  23 ++
+ .ai/tasks/HL-0019.md                       |  23 ++
+ .ai/templates/SPRINT.md                    |  18 +-
+ .tmp/HL-0006.md                            |  21 --
+ .tmp/HL-0007.md                            |  21 --
+ .tmp/HL-0008.md                            |  21 --
+ .tmp/MASTER_PLAN.md                        | 138 ------------
+ .tmp/NETWORK.md                            |  25 ---
+ .tmp/SECRETS.md                            |  22 --
+ .tmp/Sprint-0.B.md                         |  41 ----
+ CHANGELOG.md                               |   4 +
+ CURRENT_STATE.md                           |  13 +-
+ ROADMAP.md                                 |   6 +-
+ adr/ADR-009-bootstrap-idempotency.md       |  55 +++++
+ bootstrap/bootstrap.sh                     | 243 +++++++++++++++++++++
+ docs/BOOTSTRAP.md                          |  52 +++++
+ docs/CADDY.md                              |  56 +++++
+ docs/DNS.md                                |  42 ++++
+ docs/SPRINT_LOG.md                         |  26 +++
+ docs/evidence/Sprint-2.B2-validation.md    |  40 ++++
+ services/caddy/Caddyfile                   |   3 +
+ services/caddy/docker-compose.yml          |  21 ++
+ 47 files changed, 2090 insertions(+), 354 deletions(-)
+ create mode 100644 .ai/eos/RUNTIME_ENGINE.md
+ create mode 100644 .ai/eos/STATE_INDEX.md
+ create mode 100644 .ai/implementation/Sprint-1-Plan.md
+ create mode 100644 .ai/implementation/Sprint-2-Plan.md
+ create mode 100644 .ai/skills/eos_runtime/SKILL.md
+ create mode 100644 .ai/skills/repository_consistency/SKILL.md
+ create mode 100644 .ai/sprints/Sprint-1.A.md
+ create mode 100644 .ai/sprints/Sprint-1.B.md
+ create mode 100644 .ai/sprints/Sprint-2.A.md
+ create mode 100644 .ai/sprints/Sprint-2.B.md
+ create mode 100644 .ai/tasks/HL-0009.md
+ create mode 100644 .ai/tasks/HL-0010.md
+ create mode 100644 .ai/tasks/HL-0011.md
+ create mode 100644 .ai/tasks/HL-0012.md
+ create mode 100644 .ai/tasks/HL-0013.md
+ create mode 100644 .ai/tasks/HL-0014.md
+ create mode 100644 .ai/tasks/HL-0015.md
+ create mode 100644 .ai/tasks/HL-0016.md
+ create mode 100644 .ai/tasks/HL-0017.md
+ create mode 100644 .ai/tasks/HL-0018.md
+ create mode 100644 .ai/tasks/HL-0019.md
+ delete mode 100644 .tmp/HL-0006.md
+ delete mode 100644 .tmp/HL-0007.md
+ delete mode 100644 .tmp/HL-0008.md
+ delete mode 100644 .tmp/MASTER_PLAN.md
+ delete mode 100644 .tmp/NETWORK.md
+ delete mode 100644 .tmp/SECRETS.md
+ delete mode 100644 .tmp/Sprint-0.B.md
+ create mode 100644 adr/ADR-009-bootstrap-idempotency.md
+ create mode 100755 bootstrap/bootstrap.sh
+ create mode 100644 docs/BOOTSTRAP.md
+ create mode 100644 docs/CADDY.md
+ create mode 100644 docs/DNS.md
+ create mode 100644 docs/evidence/Sprint-2.B2-validation.md
+ create mode 100644 services/caddy/Caddyfile
+ create mode 100644 services/caddy/docker-compose.yml
+### 1. Tailscale Status
+### 2. Tailscale IP
+### 3. Despliegue de Caddy (docker compose up)
+### 4. Estado de contenedores (docker compose ps)
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+### 5. Validación de Caddyfile
+### 6. Inspección de red homelab-net
+[
+    {
+        "Name": "homelab-net",
+        "Id": "8ba464a464686bd210aeab479f5bbb96ea0499b1d075437dbb240212649d08d4",
+        "Created": "2026-08-01T01:48:09.236672638-04:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+### 7. Verificación de persistencia en /srv
+total 8
+drwxr-xr-x 2 root root 4096 ago  1 01:48 .
+drwxr-xr-x 4 root root 4096 ago  1 01:48 ..
+### 8. Resolución DNS interna
+### 9. Prueba HTTP
+### 10. Prueba de idempotencia

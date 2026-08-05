@@ -80,4 +80,6 @@ Antes de cambiar el estado del Sprint a `Completed` y proceder al merge del Gate
 
 ## Estado
 
-In Review
+Aborted
+
+> **Motivo de cancelación:** ADR-010 modifica el contrato arquitectónico del Runtime y deja incompleto el diseño aprobado originalmente en Sprint 2.A. Se reabre Sprint 2.A para diseñar el Runtime, y no se volverá a este Sprint 2.B.

@@ -100,11 +100,11 @@ formato para facilitar la trazabilidad del proyecto.
 - **Lecciones aprendidas:** Ejecutar vía SSH (SCP) un script idempotente permite validar la automatización remotamente sin necesidad de ensuciar el host con código no versionado o clonaciones prematuras. El script sobrevivió y demostró idempotencia en 3 ejecuciones consecutivas.
 - **Estado:** Approved
 
-## Sprint 2.A — Plataforma Central (Diseño)
+## Sprint 2.A — Plataforma Central y Diseño del Runtime (Diseño)
 
-- **Fecha:** 2026-08-01
-- **Objetivo:** Diseñar el contrato técnico que Sprint 2.B deberá ejecutar para convertir el host bootstrapped en una plataforma con acceso privado (Tailscale), proxy inverso (Caddy), resolución DNS interna (`home.arpa`) y red Docker compartida.
-- **Entregables:** Sprint Specification, Implementation Plan y Tasks (HL-0015 a HL-0019).
-- **Decisiones importantes:** Se definió Tailscale MagicDNS + Split DNS para resolución, y se especificó que `health.home.arpa` resolverá a la IP de Tailscale del host. Caddy escuchará en `0.0.0.0` (los puertos estarán protegidos por la falta de port forwarding en el enrutador físico).
-- **Lecciones aprendidas:** El Gate Review basado en contrato (detectar, verificar contra contrato, clasificar) demostró ser clave para evitar que el proceso de revisión introduzca rediseños ("creep") no aprobados en el alcance inicial.
+- **Fecha:** 2026-08-05
+- **Objetivo:** Diseñar el contrato técnico que Sprint 2.B deberá ejecutar para convertir el host bootstrapped en una plataforma con acceso privado (Tailscale), proxy inverso (Caddy), resolución DNS interna (`home.arpa`) y red Docker compartida. Además, debido al rechazo original de Sprint 2.B, diseñar el Homelab Runtime (v1.0) como motor de convergencia universal.
+- **Entregables:** Sprint Specification, Implementation Plan, Tasks (HL-0015 a HL-0019) y la Especificación Técnica del Runtime v1.0 (`Sprint-2-Runtime-Design.md`).
+- **Decisiones importantes:** Se definió Tailscale MagicDNS + Split DNS para resolución. Además, se estructuró la arquitectura del Runtime con fronteras estrictas de 6 subsistemas: Discovery, Observer, Planner, Transition Resolver, Executor y Reporter (conforme a ADR-010).
+- **Lecciones aprendidas:** Ejecutar una prueba de estrés teórica sobre una arquitectura (Capítulo 10 del diseño) con capacidades reales antes de implementar código es la mejor forma de detectar fricciones tempranas sin generar deuda técnica.
 - **Estado:** Approved

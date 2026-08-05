@@ -1,197 +1,136 @@
-# Sprint 2.A — Plataforma Central (Diseño)
+# Sprint 2.A — Diseño del Runtime y Plataforma Central
 
-## Objetivo
+## 1. Objetivo del Sprint
 
-Diseñar el contrato técnico que Sprint 2.B deberá ejecutar para convertir el host bootstrapped en una plataforma con acceso privado (Tailscale), proxy inverso (Caddy), resolución DNS interna (`home.arpa`) y red Docker compartida. Al finalizar esta fase, todos los artefactos de diseño deben estar aprobados y ser suficientes para que Sprint 2.B opere sin ambigüedad.
+Diseñar el **Runtime del Homelab** como el motor único de ejecución del proyecto (según ADR-010). El principal entregable del Sprint no es el diseño de capacidades específicas, sino la especificación del Runtime como plataforma permanente del proyecto. 
 
-## Fase
+Las capacidades de la Plataforma Central pasan a ser el primer dominio del Runtime que servirá para validar el diseño. Al finalizar esta fase, todos los artefactos de diseño técnico deben estar aprobados y ser suficientes para que Sprint 2.B implemente el código sin ambigüedades arquitectónicas ni funcionales.
 
-A — Diseño
+## 2. Alcance
 
-> En Fase A se generan los artefactos de diseño; en Fase B se ejecuta lo aprobado.
-> Ver [FEATURE_LIFECYCLE.md](../lifecycle/FEATURE_LIFECYCLE.md) para reglas de transición.
+El alcance del Sprint se divide en dos áreas principales:
 
-## Principios de la Plataforma Central
+### Diseño del Runtime
+- Definir las interfaces lógicas, contratos e interacciones entre los subsistemas del motor de ejecución.
+- Establecer las reglas lógicas para la resolución del modelo de convergencia (Current State vs Desired State).
+- *Excluido:* No se diseñará la implementación física del Runtime. No se decidirá el lenguaje de programación, la estructura física de directorios en el repositorio ni el formato sintáctico del registro. (Esas decisiones corresponden a la implementación en Fase B).
 
-Toda implementación de la plataforma central deberá cumplir estos principios. Si la implementación viola alguno, no cumple el contrato del Sprint.
+### Primer Dominio del Runtime
+- Modelar las capacidades existentes de la plataforma central dentro del modelo de componentes del Runtime.
+- Diseñar las operaciones lógicas (`install`, `configure`, `validate`, `repair`) y dependencias para las capacidades fundacionales.
 
-1. **Docker First.** Todos los componentes de plataforma se ejecutan como contenedores Docker (ADR-002). Tailscale es la única excepción justificada (requiere acceso directo al kernel para crear la interfaz de red).
-2. **Configuración Declarativa Versionada.** Toda configuración (Caddyfile, docker-compose, Tailscale ACL) se versiona en el repositorio (Constitución §1).
-3. **Persistencia bajo `/srv`.** Los datos operativos de Caddy (certificados, estado) se persisten bajo `/srv/homelab/app_data/caddy` (ADR-001).
-4. **Acceso Privado Exclusivo.** No se expone ningún puerto al enrutador físico ni a Internet pública. Todo el tráfico pasa por la tailnet (ADR-006).
-5. **Reversible.** Cada componente define su procedimiento de reversión antes de implementarse (Constitución §12).
-6. **Independencia de Servicios.** La plataforma central no depende de ningún servicio de aplicación. Los servicios de aplicación dependen de ella.
+## 3. Preguntas Arquitectónicas que este Sprint debe responder
 
-## Alcance
+El diseño técnico del Runtime debe dar respuesta explícita a las siguientes interrogantes:
 
-### Incluido
+- ¿Cómo descubre el Runtime los componentes?
+- ¿Cómo representa el Current State?
+- ¿Cómo genera un Plan de Ejecución?
+- ¿Cómo resuelve las dependencias entre componentes?
+- ¿Cómo informa los resultados de las operaciones?
+- ¿Cómo detecta los fallos y qué acciones toma al respecto?
+- ¿Cómo incorpora nuevas capacidades en el futuro sin modificar su núcleo?
+- ¿Cómo garantiza la convergencia del sistema?
 
-- Diseño de la instalación y configuración de Tailscale en el host.
-- Diseño del Caddyfile base con un servicio de prueba mínimo (health check).
-- Diseño del docker-compose para Caddy como proxy inverso.
-- Diseño de la estrategia DNS `home.arpa` (mecanismo de resolución).
-- Diseño de la red Docker compartida (`homelab-net`) para comunicación entre Caddy y servicios futuros.
-- Diseño del layout de persistencia bajo `/srv/homelab/app_data/caddy`.
-- Definición de criterios de aceptación medibles para Sprint 2.B.
-- Definición de evidencias de validación esperadas.
-- Identificación de riesgos y mitigaciones.
-- Creación de Tasks HL-0015 a HL-0019.
+## 4. Arquitectura del Runtime
 
-### Excluido
+El diseño del Runtime debe adherirse estrictamente a los principios establecidos en el [ADR-010](../../adr/ADR-010-homelab-runtime.md). El objetivo en Fase A es especificar cómo se materializan lógicamente esos principios para que la Fase B pueda codificarlos.
 
-- Escribir código ejecutable, configuración operativa o modificar el host.
-- Instalar Tailscale, Caddy o cualquier software.
-- Crear contenedores, redes o volúmenes Docker.
-- Configurar PostgreSQL, Redis u otros servicios de datos.
-- Desplegar Immich o cualquier servicio de aplicación.
-- Configurar respaldos o monitorización.
-- Configurar el enrutador físico, firewall o reglas de NAT.
-- Diseñar TLS con certificados públicos (fuera del alcance para red interna).
+Sprint 2.B deberá implementar los siguientes subsistemas lógicos, los cuales deben quedar completamente especificados en este Sprint 2.A:
 
-### No Objetivos
+- **Contrato de Componentes:** Definición lógica de los inputs, outputs y expectativas de las 4 operaciones (`install`, `configure`, `validate`, `repair`), así como la identidad única del componente.
+- **Registro:** El mecanismo lógico para el descubrimiento de componentes y la declaración de dependencias para construir el DAG.
+- **Planner (Planificador):** El algoritmo lógico que evalúa el Current State (vía `validate`), lo compara con el Desired State, resuelve el DAG y genera el Plan de Ejecución.
+- **Executor (Ejecutor):** El mecanismo lógico que recorre el plan, invoca las operaciones de los componentes, gestiona las transiciones de estado y aplica la política estricta de fallos.
+- **Reporter (Reporte/Estado):** El mecanismo lógico para registrar los resultados y reportar los estados consolidados del sistema al finalizar o fallar un plan.
 
-- No se diseña HA (alta disponibilidad) ni failover.
-- No se implementa CI/CD para despliegue de configuración.
-- No se diseñan runbooks de operación (corresponde a Sprint 4+).
-- No se endurece la seguridad del host (corresponde a Sprint 6).
+## 5. Primer Dominio del Runtime
 
-## Componentes de Diseño
+Las siguientes capacidades demostrarán la viabilidad del Runtime y serán las primeras en ser modeladas:
 
-### 1. Tailscale — Acceso Privado
+### Container Runtime
+- **Implementación vigente:** Ver ADR-002.
+- **Responsabilidad:** Habilitar la ejecución aislada de componentes que no requieran acceso directo al host.
 
-**ADR:** [ADR-006](../../adr/ADR-006-tailscale.md)
+### Private Network
+- **Implementación vigente:** Ver ADR-006.
+- **Responsabilidad:** Proveer acceso privado, seguro y exclusivo a los servicios de la plataforma.
 
-Tailscale se instala directamente en el host (no como contenedor) porque necesita acceso directo al stack de red del kernel para crear y operar la interfaz `tailscale0`.
+### Reverse Proxy
+- **Implementación vigente:** Ver ADR-007.
+- **Responsabilidad:** Exponer servicios internos de forma segura exclusivamente dentro de la red privada.
 
-El diseño debe definir:
-- Procedimiento de instalación idempotente.
-- Autenticación del nodo (auth key preconfigurada vs. interactiva).
-- ACL mínima esperada (definida en la consola Tailscale, documentada en el repo).
-- Validación: `tailscale status` confirma que el nodo está conectado a la tailnet.
-- Reversión: `tailscale down`, desinstalación y eliminación de estado.
+### Internal Name Resolution
+- **Implementación vigente:** Ver ADR-008.
+- **Responsabilidad:** Permitir resolución de nombres de servicios hacia la IP de la red privada.
 
-### 2. Caddy — Proxy Inverso
+## 6. Entregables
 
-**ADR:** [ADR-007](../../adr/ADR-007-caddy.md)
+La Fase A debe producir los siguientes artefactos de diseño técnico:
 
-Caddy corre como contenedor Docker en la red `homelab-net`. Escucha en los puertos 80 y 443 del host. Su configuración se declara en un `Caddyfile` versionado.
+- [x] **Architecture Decision Log:** Registro ligero de decisiones abiertas, descartadas y pendientes durante el diseño para evitar discusiones cíclicas futuras.
+- [x] **Runtime Architecture Specification:** Documento de diseño que especifica el flujo lógico del Planner, Executor y Reporter.
+- [x] **Component Contract Specification:** Definición técnica de las interfaces de entrada/salida para el contrato de los componentes.
+- [x] **Registry Specification:** Definición lógica de cómo se estructuran las relaciones y dependencias.
+- [x] **Execution Plan Specification:** Definición conceptual de las fases y contenido del plan que genera el Planner.
+- [x] **Primer Dominio de Capacidades:** Especificación de las operaciones lógicas, estados y dependencias para las capacidades del dominio inicial bajo el paradigma del Runtime.
 
-El diseño debe definir:
-- Docker Compose para Caddy (`services/caddy/docker-compose.yml`).
-- Caddyfile base con al menos un endpoint de health check (`health.home.arpa`).
-- Volúmenes: configuración montada desde el repo, datos persistentes en `/srv/homelab/app_data/caddy`.
-- Red Docker: nombre `homelab-net`, tipo `bridge`.
-- Validación: `curl -f http://health.home.arpa` retorna respuesta desde el proxy.
-- Reversión: `docker compose down`, eliminar volúmenes y red.
+## 7. Criterios de Aceptación (Gate Review)
 
-### 3. DNS `home.arpa` — Resolución Interna
+Para que el diseño de Fase A sea aprobado, debe cumplir con:
 
-**ADR:** [ADR-008](../../adr/ADR-008-home-arpa.md)
+### Del Diseño del Runtime
+- [x] Contrato de componente definido de forma independiente a la tecnología.
+- [x] Registro lógicamente definido (mecanismo de descubrimiento).
+- [x] Modelo de estados y flujo de convergencia completamente especificados.
+- [x] Planificador definido (incluyendo detección de ciclos e invalidación de dependencias circulares).
+- [x] Política de fallos definida de acuerdo al principio Halt-on-fail.
+- [x] Interfaces lógicas entre subsistemas (Registro, Planner, Executor, Reporter) documentadas.
+- [x] **Vacíos Arquitectónicos:** Cualquier decisión arquitectónica faltante requerida para que Sprint 2.B pueda implementarse sin ambigüedad debe registrarse y resolverse explícitamente en el diseño.
 
-El mecanismo de resolución debe permitir que los clientes de la tailnet resuelvan `*.home.arpa` hacia la IP Tailscale del servidor.
+### De las Capacidades Iniciales (Derivados)
+- [x] Se documentan los criterios lógicos para validar el estado de la capacidad *Container Runtime*.
+- [x] Se documentan los criterios lógicos para validar el estado de la capacidad *Private Network*.
+- [x] Se documentan los criterios lógicos para validar el estado de la capacidad *Reverse Proxy*.
+- [x] Se documentan los criterios lógicos para validar el estado de la capacidad *Internal Name Resolution*.
+- [x] Se especifican las dependencias (DAG) entre estas capacidades.
 
-El diseño debe evaluar y recomendar una de estas estrategias:
+## 8. Archivos a Producir
 
-| Estrategia | Ventaja | Riesgo |
-|---|---|---|
-| Tailscale MagicDNS | Integrado, cero infraestructura adicional | Depende de la consola Tailscale |
-| Pi-hole / CoreDNS como contenedor | Control total de registros | Añade un componente más que operar |
-| Archivo `/etc/hosts` en clientes | Simplicidad extrema | No escala, no se versiona |
+El diseño técnico no debe producir artefactos ejecutables. Los documentos técnicos a producir son:
 
-La estrategia elegida se documentará con justificación y, si introduce un componente nuevo, requerirá un ADR.
+- `.ai/sprints/Sprint-2.A.md` (Este documento).
+- `.ai/implementation/Sprint-2-Runtime-Design.md` (Documento principal consolidado). Debe construirse y aprobarse secuencialmente en este orden:
+  1. Modelo Conceptual
+  2. Contrato del Componente
+  3. Registro (Descubrimiento y Dependencias)
+  4. Modelo de Estado
+  5. Planner (Planificador)
+  6. Plan de Ejecución
+  7. Executor (Ejecutor)
+  8. Reporter
+  9. Casos de Error y Fallos
+  10. Primer Dominio de Capacidades
+- Actualización de documentación de diseño en `docs/` (adaptando diseños al modelo de capacidades del Runtime).
 
-### 4. Red Docker Compartida
-
-**ADR:** [ADR-002](../../adr/ADR-002-docker-first.md)
-
-Una red Docker bridge nombrada (`homelab-net`) permite que Caddy enrute tráfico hacia contenedores de servicio sin exponer puertos al host.
-
-El diseño debe definir:
-- Nombre de la red: `homelab-net`.
-- Tipo: `bridge`.
-- Creación (Sprint 2.B): declarada en el compose de Caddy como red `external: false` (se crea si no existe).
-- Consumo futuro (Sprint 3+): a partir del Sprint 3, esta red pasa a considerarse infraestructura existente y todos los servicios deberán referenciarla obligatoriamente como `external: true`.
-
-## Entregables
-
-### Fase A — Diseño
-
-- [x] Sprint Specification completada (este documento).
-- [x] Implementation Plan aprobado (`Sprint-2-Plan.md`).
-- [x] Tasks con checklist verificable creadas (HL-0015 a HL-0019).
-- [x] Criterios de aceptación definidos en cada tarea.
-- [x] Checklist de revisión preparado en el plan.
-- [x] Estrategia DNS evaluada y recomendada.
-- [x] ADR no requerido (MagicDNS es capacidad nativa de ADR-006, no introduce componente nuevo).
-
-### Fase B — Implementación
-
-La Fase B ejecutará este contrato. Los entregables de implementación se documentarán en `Sprint-2.B.md`.
-
-## Evidencia de validación requerida para Sprint 2.B
-
-Sprint 2.B deberá demostrar las siguientes validaciones:
-
-| Validación | Comando/Evidencia |
-|---|---|
-| Tailscale conectado a la tailnet | `tailscale status` muestra el nodo online |
-| Caddy corriendo como contenedor | `docker compose ps` muestra servicio healthy |
-| Red Docker `homelab-net` creada | `docker network inspect homelab-net` |
-| DNS `home.arpa` resuelve | `curl -f http://health.home.arpa` (desde un nodo en la tailnet) retorna OK |
-| Persistencia de Caddy en `/srv` | `ls -la /srv/homelab/app_data/caddy/` |
-| Idempotencia del despliegue | Segunda ejecución de `docker compose up -d` sin cambios |
-
-## Criterios de cierre del Sprint 2.A
-
-Para solicitar el cierre del Gate, deben cumplirse las siguientes condiciones documentales:
-
-- [x] Todos los entregables de Fase A están completados.
-- [x] `Sprint-2-Plan.md` en estado In Review.
-- [x] Todas las Tasks (HL-0015 a HL-0019) en estado In Review.
-- [x] Estrategia DNS definida y justificada.
-- [x] Criterios de aceptación completos y verificables.
-
-El cierre oficial ocurre cuando el Owner aprueba el Gate.
-
-## Archivos a producir
-
-- `.ai/sprints/Sprint-2.A.md`
-- `.ai/implementation/Sprint-2-Plan.md`
-- `.ai/tasks/HL-0015.md` a `HL-0019.md`
-- `docs/DNS.md` (diseño del contenido esperado para Sprint 2.B)
-- `docs/CADDY.md` (diseño del contenido esperado para Sprint 2.B)
-
-## Trazabilidad
+## 9. Trazabilidad
 
 | Tipo | Referencia |
 |---|---|
-| ADR | ADR-001, ADR-002, ADR-006, ADR-007, ADR-008 |
-| Tasks | HL-0015, HL-0016, HL-0017, HL-0018, HL-0019 |
+| ADR | ADR-001, ADR-002, ADR-006, ADR-007, ADR-008, ADR-010 |
 | Sprint anterior | Sprint 1.B |
 | Sprint siguiente | Sprint 2.B |
 | Phase | Phase 2 (Storage), Phase 3 (Networking), Phase 5 (Platform Services) |
 
-## Estado
+## 10. Estado
 
 Completed
 
-## Lecciones aprendidas
+## 11. Lecciones Aprendidas
 
-Del Sprint 1: La separación A/B ha demostrado su valor. El contrato de diseño detallado en la Fase A (6 fases, 3 niveles de idempotencia, criterios de aceptación medibles) permitió que la Fase B se ejecutara de forma autónoma, con revisiones enfocadas en el cumplimiento del contrato y no en decisiones de diseño ad hoc. La regla de Gate Review añadida a la Constitución protege contra la ampliación involuntaria del alcance durante las revisiones.
+- **Del Sprint 1:** La separación A/B ha demostrado su valor. El contrato de diseño detallado en la Fase A permitió que la Fase B se ejecutara de forma autónoma, con revisiones enfocadas en el cumplimiento del contrato. La regla de Gate Review añadida a la Constitución protege contra la ampliación involuntaria del alcance.
+- **Reapertura desde Sprint 2.B:** El Sprint 2.B falló en la Subfase B2 porque la infraestructura declarativa carecía de un motor unificado de ejecución. Esto derivó en el ADR-010 que instituye un Runtime único y modular. El Sprint 2.A se reabre porque el ADR-010 modifica el contrato arquitectónico del Runtime y deja incompleto el diseño aprobado originalmente.
 
-## Deuda técnica heredada
+## 12. Próximo Sprint
 
-Del Sprint 1.B:
-- Separación Ensure → Validate → Evidence en el motor de convergencia del bootstrap.
-- Parametrización CLI del bootstrap (`--dry-run`, `--verbose`).
-- Refactorización de `validate_component` en funciones atómicas.
-- Encapsulamiento del flujo principal en `main()`.
-- Rotación de logs con logrotate.
-
-Del Gate Sprint 2.A:
-- **Redacción de Contratos (Plan):** Separar explícitamente la formulación de diseño ("La implementación deberá validar mediante...") de la ejecución pura ("Ejecutar curl..."), evitando mezclar el qué (Fase A) con el cómo (Fase B).
-- **Inmutabilidad de imágenes:** Anclar las imágenes de contenedores a hashes `sha256` específicos para garantizar reproducibilidad estricta.
-
-## Próximo Sprint
-
-Sprint 2.B (Implementación de la Plataforma Central)
+Sprint 2.B: Implementación del Runtime y de las primeras capacidades de la Plataforma Central utilizando dicho Runtime.

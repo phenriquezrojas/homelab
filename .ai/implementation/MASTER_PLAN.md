@@ -59,7 +59,7 @@ Documento vivo de ejecución técnica. Se organiza por fases, no por sprints. La
   - [x] Diseñar DNS y subdominios.
   - [ ] Definir acceso Tailscale y revocación.
   - [x] Diseñar integración Caddy.
-- **Sprints relacionados:** Sprint 2.
+- **Sprints relacionados:** Sprint 2.A y 2.B.
 - **ADR relacionados:** ADR-006, ADR-007, ADR-008.
 - **Tareas relacionadas:** HL-0015, HL-0016, HL-0017, HL-0018, HL-0019.
 
@@ -89,7 +89,7 @@ Documento vivo de ejecución técnica. Se organiza por fases, no por sprints. La
   - [x] Definir contratos de red y persistencia.
   - [ ] Documentar operación de datos compartidos.
   - [ ] Añadir pruebas y runbooks.
-- **Sprints relacionados:** Sprint 2.
+- **Sprints relacionados:** Sprint 2.A y 2.B.
 - **ADR relacionados:** ADR-002, ADR-007.
 - **Tareas relacionadas:** HL-0016, HL-0018, HL-0019.
 
