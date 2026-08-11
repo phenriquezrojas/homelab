@@ -22,7 +22,7 @@ fi
 
 # If it didn't respond "OK", is something else occupying the port?
 if lsof -Pi :80 -sTCP:LISTEN -t >/dev/null 2>&1; then
-    echo "FAILED: Port 80 is occupied by an incompatible service"
+    echo "FAILED"
     exit 0
 fi
 
