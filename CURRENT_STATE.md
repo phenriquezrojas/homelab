@@ -2,7 +2,7 @@
 
 **Fase:** Sprint 2.B (Revision 2) — Plataforma Central (Implementación del Runtime Engine)
 **Fecha de actualización:** 2026-08-11
-**Estado general:** Ejecutando activamente la Validación Operacional (B2) en el servidor host.
+**Estado general:** Validación Operacional (B2) finalizada con éxito. Sprint 2.B listo y en revisión (IN REVIEW).
 
 Se ha completado la escritura del código del Motor de Convergencia en Go (`runtime/`) y se han creado los componentes (`docker-engine`, `tailscale`, `caddy`, `magic-dns`) en forma de scripts Bash. El `bootstrap.sh` fue actualizado para aprovisionar el Runtime.
 

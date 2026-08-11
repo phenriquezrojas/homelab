@@ -5,6 +5,9 @@ Todos los cambios relevantes se documentan siguiendo [Keep a Changelog](https://
 ## [Unreleased]
 
 ### Added
+- Implementación de la primera versión del Homelab Runtime Engine en Go (`runtime/`) con motor basado en grafos de dependencias (DAG) e idempotencia nativa.
+- Despliegue y validación operacional de las capacidades iniciales (Docker, Tailscale, Caddy y MagicDNS) logrando convergencia de `ABSENT` a `HEALTHY` en el servidor host.
+- Robustecimiento de los scripts de validación de componentes para detectar y reportar conflictos de puertos externos (ej. Apache en el puerto 80).
 - Cierre formal de la reapertura del Sprint 2.A (Diseño). Creada y aprobada la especificación técnica v1.0 del Homelab Runtime (`Sprint-2-Runtime-Design.md`) validando sus 6 subsistemas (Discovery, Observer, Planner, Transition Resolver, Executor, Reporter) frente a un dominio real (Docker, Caddy, Tailscale, MagicDNS).
 - Cierre original del Sprint 2.A (Diseño). Generados y validados los artefactos para implementar la plataforma central: Tailscale (acceso privado), Caddy (proxy inverso), DNS `home.arpa` y red compartida Docker `homelab-net`. Se produjeron las tareas HL-0015 a HL-0019 y el plan de implementación.
 - Cierre del Sprint 1.B (Implementación). Implementado el script `bootstrap/bootstrap.sh`. Verificada y comprobada empíricamente la idempotencia del script en el servidor `homelab` (3 ejecuciones sin error ni solapamiento). La *Phase 1* está oficialmente finalizada.

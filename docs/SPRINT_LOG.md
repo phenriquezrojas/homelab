@@ -109,6 +109,14 @@ formato para facilitar la trazabilidad del proyecto.
 - **Lecciones aprendidas:** Ejecutar una prueba de estrés teórica sobre una arquitectura (Capítulo 10 del diseño) con capacidades reales antes de implementar código es la mejor forma de detectar fricciones tempranas sin generar deuda técnica.
 - **Estado:** Approved
 
+## Sprint 2.B — Plataforma Central (Implementación del Runtime Engine)
+
+- **Fecha:** 2026-08-11
+- **Objetivo:** Desarrollar y validar el Homelab Runtime Engine v1.0, y utilizarlo para desplegar el primer dominio de capacidades (Docker, Tailscale, Caddy y MagicDNS).
+- **Entregables:** Código Go del Runtime (`runtime/`), scripts de componentes, registro `registry.yaml` y evidencias en `docs/evidence/`.
+- **Decisiones importantes:** Implementar un motor puro de convergencia basado en DAG de dependencias (Topological Sort) y política Halt-on-Fail (ADR-010).
+- **Estado:** In Review
+
 
 
 

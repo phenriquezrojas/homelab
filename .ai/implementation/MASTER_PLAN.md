@@ -53,7 +53,7 @@ Documento vivo de ejecución técnica. Se organiza por fases, no por sprints. La
 - **Objetivo:** habilitar conectividad privada y nombres internos coherentes.
 - **Descripción:** Tailscale, DNS interno `home.arpa` y entrada HTTP(S) con Caddy.
 - **Dependencias:** Phases 1 y 2.
-- **Estado:** In Progress.
+- **Estado:** In Review.
 - **Riesgos:** DNS incompleto, ACL excesivas y exposición accidental.
 - **Checklist:**
   - [x] Diseñar DNS y subdominios.
@@ -83,7 +83,7 @@ Documento vivo de ejecución técnica. Se organiza por fases, no por sprints. La
 - **Objetivo:** habilitar dependencias compartidas para servicios.
 - **Descripción:** proxy, PostgreSQL y Redis bajo las decisiones aprobadas.
 - **Dependencias:** Phases 1 a 4.
-- **Estado:** In Progress.
+- **Estado:** In Review.
 - **Riesgos:** dependencias compartidas sin operación ni recuperación definida.
 - **Checklist:**
   - [x] Definir contratos de red y persistencia.

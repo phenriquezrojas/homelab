@@ -4,7 +4,7 @@
 Sprint: 2.B
 Revision: 2
 Document Status: ACTIVE
-Execution Status: IN PROGRESS
+Execution Status: IN REVIEW
 Design Baseline: 
   Artifact: Sprint-2-Runtime-Design.md
   Revision: 1
@@ -44,12 +44,12 @@ A — Diseño | B1 — Implementación Declarativa (Repositorio) | B2 — Despli
 
 ### Subfase B2 — Despliegue y Validación Operacional (Host)
 
-- [ ] Motor ejecutado en el host objetivo logrando la convergencia de `ABSENT` a `HEALTHY` para todas las capacidades.
-- [ ] Artefacto obligatorio de evidencia operacional creado en `docs/evidence/Sprint-2.B2-validation.md` documentando la traza del Executor.
+- [x] Motor ejecutado en el host objetivo logrando la convergencia de `ABSENT` a `HEALTHY` para todas las capacidades.
+- [x] Artefacto obligatorio de evidencia operacional creado en `docs/evidence/Sprint-2.B2-validation.md` documentando la traza del Executor.
 
 ## Estado de Ejecución
 
-**IN PROGRESS**
+**IN REVIEW**
 
 ## Tasks Asociadas (Fase B1)
 
