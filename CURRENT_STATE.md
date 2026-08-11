@@ -15,3 +15,4 @@ Se ha completado la escritura del código del Motor de Convergencia en Go (`runt
 
 ## Próximo hito
 - Desarrollar el Homelab Runtime Engine y desplegar el primer dominio (Docker, Tailscale, Caddy, MagicDNS).
+

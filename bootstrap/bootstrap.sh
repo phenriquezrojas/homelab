@@ -238,6 +238,47 @@ validate_component user_docker_group
 log_info "FASE 6: Verificación funcional end-to-end..."
 validate_component docker_functional
 
+# FASE 7: Compilación e instalación del Homelab Runtime Engine
+log_info "FASE 7: Compilación e instalación del Homelab Runtime Engine..."
+
+# Determinar directorio del repositorio (asumimos que bootstrap se ejecuta desde la raíz del repo)
+REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+
+if [ ! -d "$REPO_DIR/runtime" ]; then
+    log_error "No se encontró el directorio runtime/ en $REPO_DIR. ¿Se ejecutó bootstrap desde el repositorio clonado?"
+fi
+
+# Instalar Go si no está disponible
+if ! command -v go >/dev/null 2>&1; then
+    log_info "Go no encontrado. Instalando golang-go..."
+    update_apt_once
+    DEBIAN_FRONTEND=noninteractive apt-get install -y -q golang-go
+fi
+
+GO_VERSION=$(go version)
+log_info "Go disponible: $GO_VERSION"
+
+# Compilar el runtime
+log_info "Compilando Homelab Runtime..."
+(cd "$REPO_DIR/runtime" && go build -o homelab ./cmd/homelab/)
+
+# Instalar el binario
+log_info "Instalando binario homelab en /usr/local/bin..."
+install -m 0755 "$REPO_DIR/runtime/homelab" /usr/local/bin/homelab
+rm -f "$REPO_DIR/runtime/homelab"
+
+# Asignar permisos de ejecución a los scripts de componentes
+log_info "Asignando permisos de ejecución a los componentes..."
+find "$REPO_DIR/runtime/components" -name "*.sh" -exec chmod +x {} \;
+
+# Verificar que el binario funciona
+if homelab --help >/dev/null 2>&1 || homelab 2>&1 | grep -q "Usage"; then
+    log_ok "Binario homelab instalado y funcional."
+else
+    log_error "El binario homelab no responde correctamente."
+fi
+
 log_info "=========================================================="
 log_ok "FIN DEL BOOTSTRAP: El host está preparado."
 log_info "=========================================================="
+log_info "Siguiente paso: ejecutar 'homelab converge' para aprovisionar las capacidades."

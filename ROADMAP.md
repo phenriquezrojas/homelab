@@ -16,7 +16,7 @@ A partir del Sprint 0, cada Sprint se divide en dos fases: **Fase A (Diseño)** 
 | 1.A — Bootstrap (Diseño) | Diseñar proceso reproducible de base del host. | Sprint Specification, Implementation Plan, Tasks y criterios de aceptación aprobados. | Sprint 0.B | Completed |
 | 1.B — Bootstrap (Implementación) | Reproducir base del host. | Proceso validado para Ubuntu Server LTS, Docker y directorios persistentes. | Sprint 1.A | Completed |
 | 2.A — Plataforma central (Diseño) | Diseñar componentes compartidos y Homelab Runtime. | Sprint Specification, Implementation Plan, Tasks y criterios de aceptación aprobados. | Sprint 1.B | Completed |
-| 2.B — Plataforma central (Implementación) | Implementar Homelab Runtime Engine y desplegar el primer dominio. | Motor ejecutado y capacidades iniciales aprovisionadas (Tailscale, Caddy, home.arpa). | Sprint 2.A | Planned |
+| 2.B — Plataforma central (Implementación) | Implementar Homelab Runtime Engine y desplegar el primer dominio. | Motor ejecutado y capacidades iniciales aprovisionadas (Tailscale, Caddy, home.arpa). | Sprint 2.A | In Progress |
 | 3.A — Respaldo (Diseño) | Diseñar protección y recuperación de datos. | Sprint Specification, Implementation Plan, Tasks y criterios de aceptación aprobados. | Sprint 2.B | Planned |
 | 3.B — Respaldo (Implementación) | Proteger y recuperar datos. | Restic a Backblaze B2 y restauración probada. | Sprint 3.A | Planned |
 | 4.A — Monitorización (Diseño) | Diseñar observabilidad del sistema. | Sprint Specification, Implementation Plan, Tasks y criterios de aceptación aprobados. | Sprints 2.B y 3.B | Planned |

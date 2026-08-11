@@ -56,3 +56,4 @@ Todos los cambios relevantes se documentan siguiendo [Keep a Changelog](https://
 
 
 
+- Fix missing go.sum, tests and bootstrap logic for B1 completion.

@@ -38,9 +38,9 @@ A — Diseño | B1 — Implementación Declarativa (Repositorio) | B2 — Despli
 
 ### Subfase B1 — Implementación Declarativa (Repositorio)
 
-- [ ] Código fuente del motor versionado en el repositorio (ej. `runtime/`).
-- [ ] Scripts o binarios de los componentes de Docker, Tailscale, Caddy y MagicDNS.
-- [ ] Registro (`registry.yaml` o similar) con las capacidades y proveedores configurados.
+- [x] Código fuente del motor versionado en el repositorio (`runtime/`).
+- [x] Scripts de los componentes de Docker, Tailscale, Caddy y MagicDNS (`runtime/components/`).
+- [x] Registro (`registry.yaml`) con las capacidades y proveedores configurados.
 
 ### Subfase B2 — Despliegue y Validación Operacional (Host)
 
@@ -64,7 +64,9 @@ A — Diseño | B1 — Implementación Declarativa (Repositorio) | B2 — Despli
 
 ## Deuda técnica
 
-*A llenar post-ejecución*
+- **Subcomando `homelab status`:** Definido en el plan como herramienta de diagnóstico ("Muestra el último estado conocido") pero no implementado en B1. No bloquea B2 pero debe añadirse en un sprint posterior.
+- **`go.sum` generado manualmente:** El archivo fue creado con hashes conocidos. Debe regenerarse con `go mod tidy` al compilar en el servidor para garantizar integridad criptográfica.
+- **Reporter solo genera texto:** El plan mencionaba "texto/JSON". La serialización JSON puede añadirse como mejora futura.
 
 ## Próximo Sprint
 
