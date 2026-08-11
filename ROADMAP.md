@@ -35,3 +35,5 @@ A partir del Sprint 0, cada Sprint se divide en dos fases: **Fase A (Diseño)** 
 Antes de cerrar un sprint, los cambios deben estar documentados, no contener secretos y actualizar estado, changelog, runbooks y ADR cuando corresponda. Los sprints de la fase 0 no autorizan implementación de infraestructura.
 
 A partir del Sprint 0, cada sprint se divide en Fase A (Diseño) y Fase B (Implementación). La Fase A produce los artefactos de diseño (Sprint Specification, Implementation Plan, Tasks y criterios de aceptación). La Fase B ejecuta exactamente esos artefactos. No se inicia la Fase B sin aprobación explícita de la Fase A.
+
+

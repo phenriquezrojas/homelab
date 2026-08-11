@@ -1,0 +1,22 @@
+schema_version: 1
+
+capabilities:
+  - capability: container-runtime
+    provider_id: docker-engine
+    contract_version: 1
+    dependencies: []
+
+  - capability: private-network
+    provider_id: tailscale
+    contract_version: 1
+    dependencies: []
+
+  - capability: reverse-proxy
+    provider_id: caddy
+    contract_version: 1
+    dependencies: [container-runtime]
+
+  - capability: internal-dns
+    provider_id: magic-dns
+    contract_version: 1
+    dependencies: [private-network]

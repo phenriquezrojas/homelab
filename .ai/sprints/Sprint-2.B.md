@@ -4,7 +4,7 @@
 Sprint: 2.B
 Revision: 2
 Document Status: ACTIVE
-Execution Status: PLANNED
+Execution Status: IN PROGRESS
 Design Baseline: 
   Artifact: Sprint-2-Runtime-Design.md
   Revision: 1
@@ -49,7 +49,14 @@ A — Diseño | B1 — Implementación Declarativa (Repositorio) | B2 — Despli
 
 ## Estado de Ejecución
 
-*Actualizar campo `Execution Status` en la cabecera (PLANNED | IN PROGRESS | ABORTED | COMPLETED).*
+**IN PROGRESS**
+
+## Tasks Asociadas (Fase B1)
+
+- [HL-0020] Compilar motor del Runtime en Go (`runtime/cmd/homelab/main.go`).
+- [HL-0021] Escribir contratos para `docker-engine`, `tailscale`, `caddy`, `magic-dns`.
+- [HL-0022] Crear registro declarativo `registry.yaml`.
+- [HL-0023] Documentar el runtime y adaptar bootstrap.
 
 ## Lecciones aprendidas
 

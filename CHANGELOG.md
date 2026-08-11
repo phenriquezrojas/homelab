@@ -54,3 +54,5 @@ Todos los cambios relevantes se documentan siguiendo [Keep a Changelog](https://
 - Reglas de exclusión para archivos locales, secretos y reportes.
 
 
+
+
