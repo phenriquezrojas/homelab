@@ -4,7 +4,7 @@
 Sprint: 2.B
 Revision: 2
 Document Status: ACTIVE
-Execution Status: IN REVIEW
+Execution Status: COMPLETED
 Design Baseline: 
   Artifact: Sprint-2-Runtime-Design.md
   Revision: 1
@@ -49,7 +49,7 @@ A — Diseño | B1 — Implementación Declarativa (Repositorio) | B2 — Despli
 
 ## Estado de Ejecución
 
-**IN REVIEW**
+**COMPLETED**
 
 ## Tasks Asociadas (Fase B1)
 

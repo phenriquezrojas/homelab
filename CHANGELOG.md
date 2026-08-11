@@ -5,6 +5,7 @@ Todos los cambios relevantes se documentan siguiendo [Keep a Changelog](https://
 ## [Unreleased]
 
 ### Added
+- Cierre formal del Sprint 2.B (Implementación). Motor del Runtime Go e infraestructura base (Caddy, Tailscale, MagicDNS, Docker) desplegados y validados como HEALTHY de forma idempotente en el host.
 - Implementación de la primera versión del Homelab Runtime Engine en Go (`runtime/`) con motor basado en grafos de dependencias (DAG) e idempotencia nativa.
 - Despliegue y validación operacional de las capacidades iniciales (Docker, Tailscale, Caddy y MagicDNS) logrando convergencia de `ABSENT` a `HEALTHY` en el servidor host.
 - Robustecimiento de los scripts de validación de componentes para detectar y reportar conflictos de puertos externos (ej. Apache en el puerto 80).

@@ -115,7 +115,7 @@ formato para facilitar la trazabilidad del proyecto.
 - **Objetivo:** Desarrollar y validar el Homelab Runtime Engine v1.0, y utilizarlo para desplegar el primer dominio de capacidades (Docker, Tailscale, Caddy y MagicDNS).
 - **Entregables:** Código Go del Runtime (`runtime/`), scripts de componentes, registro `registry.yaml` y evidencias en `docs/evidence/`.
 - **Decisiones importantes:** Implementar un motor puro de convergencia basado en DAG de dependencias (Topological Sort) y política Halt-on-Fail (ADR-010).
-- **Estado:** In Review
+- **Estado:** Approved
 
 
 
