@@ -70,7 +70,16 @@ Este artefacto es **obligatorio para cerrar el Sprint** y debe registrar como m�
 - Evidencias relevantes (logs, salidas de comandos)
 - Conclusión
 
-Si durante la Fase B (B1 o B2) se descubre que se necesitan cambios de diseño, se retorna a la Fase A para actualizar los artefactos antes de continuar.
+Si durante la Fase B (B1 o B2) se descubre que se necesitan cambios de diseño, se retorna a la Fase A para actualizar los artefactos mediante el **Ciclo de Re-planificación (Replanning / Revision Cycle)** descrito a continuación.
+
+## Replanning / Revision Cycle
+
+Cuando se produce un hallazgo arquitectónico, o en general cualquier cambio material (nuevo requisito, bug de diseño, cambio de alcance/dependencia) que invalida el *baseline* actual, se activa el ciclo de re-planificación formal para preservar el contexto sin perder trazabilidad:
+
+1. **Separación de Estados:** El ciclo distingue estrictamente entre `Document Status` (ej. `ACTIVE`, `SUPERSEDED`) y `Execution Status` (ej. `PLANNED`, `IN PROGRESS`, `ABORTED`, `COMPLETED`).
+2. **Design Baseline:** Toda fase de implementación (B) debe declarar explícitamente en su metadata qué diseño y revisión la gobierna de manera inequívoca (ej. `Design Baseline: Artifact: Sprint-2-Runtime-Design.md, Revision: 1`).
+3. **Supersession:** Todo documento superado pasa a `Document Status: SUPERSEDED`. Se preserva su valor histórico (indicando `Superseded By` y `Reason`, y opcionalmente `Design Role`).
+4. **Revisiones:** Cuando un Sprint cambia o fracasa por un hallazgo que requiere rediseño, el intento antiguo conserva su `Execution Status: ABORTED`, pero su documento pasa a `Document Status: SUPERSEDED`. La revisión antigua se archiva físicamente en un directorio `history/` (ej. `history/Sprint-x.B-r1.md`). Se genera entonces una nueva revisión con `Document Status: ACTIVE` y `Execution Status: PLANNED`, apoyada en el nuevo `Design Baseline`.
 
 ## Reglas de transición
 

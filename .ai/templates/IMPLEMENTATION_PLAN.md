@@ -1,5 +1,11 @@
 # Implementation Plan — <nombre>
 
+```yaml
+Document Status: ACTIVE
+Superseded By: <opcional>
+Design Role: <ej: Target Implementation, Historical Input>
+```
+
 ## Objetivo
 
 <resultado>

@@ -7,6 +7,13 @@ Relacionado: Sprint 2.A, Sprint 2.B, ADR-001, ADR-002, ADR-006, ADR-007, ADR-008
 
 # Implementation Plan — Plataforma Central (Sprint 2)
 
+```yaml
+Document Status: SUPERSEDED
+Superseded By: Sprint-2-Runtime-Design.md
+Reason: ADR-010 cambió el paradigma de ejecución secuencial a motor de convergencia.
+Design Role: Historical Input (Las tecnologías Docker, Tailscale, Caddy y MagicDNS siguen siendo el dominio objetivo).
+```
+
 ## Objetivo
 
 Definir el contrato técnico completo que Sprint 2.B deberá ejecutar para habilitar acceso privado (Tailscale), proxy inverso (Caddy), resolución DNS interna (`home.arpa`) y red Docker compartida sobre el host bootstrapped en Sprint 1.

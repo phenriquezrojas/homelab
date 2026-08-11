@@ -108,3 +108,5 @@ formato para facilitar la trazabilidad del proyecto.
 - **Decisiones importantes:** Se definió Tailscale MagicDNS + Split DNS para resolución. Además, se estructuró la arquitectura del Runtime con fronteras estrictas de 6 subsistemas: Discovery, Observer, Planner, Transition Resolver, Executor y Reporter (conforme a ADR-010).
 - **Lecciones aprendidas:** Ejecutar una prueba de estrés teórica sobre una arquitectura (Capítulo 10 del diseño) con capacidades reales antes de implementar código es la mejor forma de detectar fricciones tempranas sin generar deuda técnica.
 - **Estado:** Approved
+
+

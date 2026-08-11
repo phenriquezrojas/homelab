@@ -52,3 +52,5 @@ Todos los cambios relevantes se documentan siguiendo [Keep a Changelog](https://
 - Decisiones arquitectónicas registradas de ADR-001 a ADR-008.
 - Convenciones de contribución, versionado semántico, nombres y estilo Markdown.
 - Reglas de exclusión para archivos locales, secretos y reportes.
+
+

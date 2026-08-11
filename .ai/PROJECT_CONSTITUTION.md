@@ -40,6 +40,7 @@ El marco EOS se apoya en los siguientes pilares:
     - registrar el Sprint como Approved
     - ejecutar el commit de cierre
 15. Ningún Sprint podrá implementar capacidades del Homelab sin que exista previamente la capacidad correspondiente en el Runtime para instalarlas, configurarlas, validarlas y repararlas. El Runtime crece primero.
+16. **Authority Resolution Rule:** La autoridad documental se resuelve mediante la siguiente jerarquía estricta: `Constitución EOS -> ADR ACCEPTED -> Design Baseline (con revisión específica) -> Sprint / Revision ACTIVE -> Implementation Plan -> Execution`. Un artefacto de nivel inferior nunca puede contradecir una decisión de nivel superior. Si lo hace, el artefacto inferior queda invalidado y debe generarse una nueva revisión. Cuando múltiples artefactos describan el mismo trabajo, el artefacto `ACTIVE` prevalece sobre `SUPERSEDED`, un `Design Baseline` declarado prevalece sobre planes históricos, y un artefacto `SUPERSEDED` puede utilizarse como contexto histórico pero NUNCA como fuente de instrucciones ejecutables. Si existen dos artefactos `ACTIVE` incompatibles para el mismo ámbito, la ejecución debe detenerse y requerir resolución documental.
 
 ## Reglas de trabajo
 

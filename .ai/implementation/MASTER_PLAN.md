@@ -137,3 +137,5 @@ Documento vivo de ejecución técnica. Se organiza por fases, no por sprints. La
 - **Sprints relacionados:** Sprint 4, Sprint 6 y Sprint 7.
 - **ADR relacionados:** ADR-002 a ADR-008 según alcance.
 - **Tareas relacionadas:** por planificar.
+
+

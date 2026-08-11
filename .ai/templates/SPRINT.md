@@ -1,5 +1,13 @@
 # Sprint <id> — <nombre>
 
+```yaml
+Sprint: <id>
+Revision: 1
+Document Status: ACTIVE
+Execution Status: PLANNED
+Design Baseline: <artefacto y revision opcional>
+```
+
 ## Objetivo
 
 <objetivo verificable>
@@ -42,9 +50,9 @@ A — Diseño | B1 — Implementación Declarativa (Repositorio) | B2 — Despli
 
 - `<ruta>`
 
-## Estado
+## Estado de Ejecución
 
-Planned | Design | Design Approved | In Progress | Completed | Blocked
+*Actualizar campo `Execution Status` en la cabecera (PLANNED | IN PROGRESS | ABORTED | COMPLETED).*
 
 ## Lecciones aprendidas
 
