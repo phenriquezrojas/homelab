@@ -37,13 +37,13 @@
 
 ### Ejecución de la Convergencia Final
 ```text
-peter@desktop:~/homelab$ sudo HOMELAB_REGISTRY=runtime/registry.yaml HOMELAB_COMPONENTS=runtime/components homelab converge
+peter@desktop:~/homelab$ sudo homelab converge
 No operations needed. System is in the desired state.
 ```
 
 ### Verificación de Firmas e Idempotencia
 ```text
-peter@desktop:~/homelab$ sudo HOMELAB_REGISTRY=runtime/registry.yaml HOMELAB_COMPONENTS=runtime/components homelab plan
+peter@desktop:~/homelab$ sudo homelab plan
 Execution Plan:
   No operations needed. System is in the desired state.
 ```
