@@ -14,8 +14,8 @@ mkdir -p /srv/homelab/app_data/caddy/config
 # We assume Caddyfile is in services/caddy/Caddyfile as per previous structure.
 # But since this is executed from the repo root or runtime, we should reference it relative to project root.
 # Let's just run docker compose from services/caddy.
-
-cd ../../services/caddy || { echo "services/caddy directory not found" >&2; exit 1; }
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
+cd "$SCRIPT_DIR/../../../services/caddy" || { echo "services/caddy directory not found" >&2; exit 1; }
 docker compose up -d
 
 # Wait for it to be running
