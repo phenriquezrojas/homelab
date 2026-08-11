@@ -19,11 +19,22 @@ func main() {
 	}
 
 	command := os.Args[1]
-	registryPath := "runtime/registry.yaml" // Default for testing
+	registryPath := "registry.yaml"
+	if _, err := os.Stat(registryPath); os.IsNotExist(err) {
+		if _, err := os.Stat("runtime/registry.yaml"); err == nil {
+			registryPath = "runtime/registry.yaml"
+		}
+	}
 	if p := os.Getenv("HOMELAB_REGISTRY"); p != "" {
 		registryPath = p
 	}
-	componentsDir := "components" // Default for testing
+
+	componentsDir := "components"
+	if _, err := os.Stat(componentsDir); os.IsNotExist(err) {
+		if _, err := os.Stat("runtime/components"); err == nil {
+			componentsDir = "runtime/components"
+		}
+	}
 	if p := os.Getenv("HOMELAB_COMPONENTS"); p != "" {
 		componentsDir = p
 	}
