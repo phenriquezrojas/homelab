@@ -272,11 +272,13 @@ log_info "Asignando permisos de ejecución a los componentes..."
 find "$REPO_DIR/runtime/components" -name "*.sh" -exec chmod +x {} \;
 
 # Verificar que el binario funciona
-if homelab --help >/dev/null 2>&1 || homelab 2>&1 | grep -q "Usage"; then
+/usr/local/bin/homelab > /tmp/homelab-help 2>&1 || true
+if grep -q "Usage" /tmp/homelab-help; then
     log_ok "Binario homelab instalado y funcional."
 else
     log_error "El binario homelab no responde correctamente."
 fi
+rm -f /tmp/homelab-help
 
 log_info "=========================================================="
 log_ok "FIN DEL BOOTSTRAP: El host está preparado."
