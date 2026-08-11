@@ -12,10 +12,8 @@ if ! docker ps -q -f name=^caddy$ >/dev/null 2>&1; then
     exit 0
 fi
 
-# Signature check: Is it actually responding to our health check?
-# Our Caddyfile explicitly returns "OK" for health.home.arpa
-RESPONSE=$(curl -s -H "Host: health.home.arpa" http://localhost:80 || true)
-if [ "$RESPONSE" = "OK" ]; then
+# Signature check: Caddy automatically redirects to HTTPS, so we just check for its Server header
+if curl -s -I http://localhost:80 | grep -q "Server: Caddy"; then
     echo "HEALTHY"
     exit 0
 fi
