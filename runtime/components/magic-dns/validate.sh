@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 # validate.sh for magic-dns
-if ! tailscale status | grep -q "MagicDNS"; then
+if ! tailscale status --json | grep -q '"MagicDNSEnabled": true'; then
     echo "ABSENT"
     exit 0
 fi
